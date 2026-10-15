@@ -2,8 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 // =====================================================
-// WELCOME SCREEN — mind-blowing editorial design.
-// Glass logo pill + warm glow + floating paw prints.
+// WELCOME SCREEN — glass logo + Welcome title + big image.
 // =====================================================
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -27,17 +26,13 @@ class WelcomeScreen extends StatelessWidget {
               fit: StackFit.expand,
               children: [
 
-                // -----------------------------------------
-                // LAYER 1: Dog image.
-                // -----------------------------------------
+                // LAYER 1: Pet image.
                 Image.asset(
                   'assets/images/welcome_bg.jpg',
                   fit: BoxFit.cover,
                 ),
 
-                // -----------------------------------------
-                // LAYER 2: Gradient (darker top + bottom).
-                // -----------------------------------------
+                // LAYER 2: Gradient.
                 Container(
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
@@ -54,10 +49,7 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                // -----------------------------------------
-                // LAYER 3: WARM RADIAL GLOW behind headline.
-                // Soft peach halo — feels like golden hour.
-                // -----------------------------------------
+                // LAYER 3: Warm glow behind headline.
                 Positioned(
                   bottom: 60,
                   left: -80,
@@ -77,152 +69,137 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                // -----------------------------------------
-                // LAYER 4: FLOATING PAW PRINTS (decorative).
-                // Very subtle — adds texture without noise.
-                // -----------------------------------------
+                // LAYER 4: Floating paw prints.
                 Positioned(
-                  top: 140,
+                  top: 220,
                   left: 30,
                   child: _pawPrint(0.12, 22, -0.3),
                 ),
                 Positioned(
-                  top: 230,
+                  top: 320,
                   right: 40,
                   child: _pawPrint(0.09, 18, 0.4),
                 ),
                 Positioned(
-                  top: 340,
+                  top: 420,
                   left: 55,
                   child: _pawPrint(0.07, 14, 0.15),
                 ),
-                Positioned(
-                  bottom: 380,
-                  right: 60,
-                  child: _pawPrint(0.08, 16, -0.2),
-                ),
 
-                // -----------------------------------------
                 // LAYER 5: Content.
-                // -----------------------------------------
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 20, 22, 22),
+                  padding: const EdgeInsets.fromLTRB(18, 16, 18, 18),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
 
                       // -----------------------------------------
-                      // TOP BAR: Glass logo pill + Sign Up pill.
+                      // TOP BAR: Glass logo only.
                       // -----------------------------------------
-                      Row(
-                        mainAxisAlignment:
-                            MainAxisAlignment.spaceBetween,
-                        children: [
-
-                          // GLASS LOGO PILL.
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: BackdropFilter(
-                              filter: ImageFilter.blur(
-                                sigmaX: 12,
-                                sigmaY: 12,
-                              ),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 8,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.15),
-                                  borderRadius: BorderRadius.circular(30),
-                                  border: Border.all(
-                                    color: Colors.white.withOpacity(0.25),
-                                    width: 1,
-                                  ),
-                                ),
-                                child: Row(
-                                  children: [
-                                    // Teal circle with paw.
-                                    Container(
-                                      width: 26,
-                                      height: 26,
-                                      decoration: BoxDecoration(
-                                        color: teal,
-                                        shape: BoxShape.circle,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: teal.withOpacity(0.5),
-                                            blurRadius: 12,
-                                            offset: const Offset(0, 2),
-                                          ),
-                                        ],
-                                      ),
-                                      child: const Icon(
-                                        Icons.pets,
-                                        color: Colors.white,
-                                        size: 15,
-                                      ),
-                                    ),
-                                    const SizedBox(width: 8),
-                                    const Text(
-                                      'VetAware',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w700,
-                                        letterSpacing: -0.3,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(
+                            sigmaX: 14,
+                            sigmaY: 14,
                           ),
-
-                          // SIGN UP PILL (peach-tinted).
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 9,
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(
+                              8, 7, 14, 7,
                             ),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.white.withOpacity(0.18),
                               borderRadius: BorderRadius.circular(30),
                               border: Border.all(
-                                color: peach.withOpacity(0.4),
-                                width: 1.5,
+                                color: Colors.white.withOpacity(0.3),
+                                width: 1,
                               ),
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
+                                // Teal paw circle with glow.
                                 Container(
-                                  width: 6,
-                                  height: 6,
-                                  decoration: const BoxDecoration(
+                                  width: 32,
+                                  height: 32,
+                                  decoration: BoxDecoration(
                                     color: teal,
                                     shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: teal.withOpacity(0.7),
+                                        blurRadius: 16,
+                                        spreadRadius: 1,
+                                        offset: const Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Icon(
+                                    Icons.pets,
+                                    color: Colors.white,
+                                    size: 18,
                                   ),
                                 ),
-                                const SizedBox(width: 6),
+                                const SizedBox(width: 10),
                                 const Text(
-                                  'Sign Up',
+                                  'VetAware',
                                   style: TextStyle(
-                                    color: darkText,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w800,
+                                    letterSpacing: -0.2,
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                        ],
+                        ),
+                      ),
+
+                      const SizedBox(height: 28),
+
+                      // -----------------------------------------
+                      // WELCOME TITLE — bold, white, big.
+                      // -----------------------------------------
+                      const Text(
+                        'Welcome to',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 28,
+                          fontWeight: FontWeight.w400,
+                          height: 1.15,
+                          letterSpacing: -0.5,
+                          shadows: [
+                            Shadow(
+                              color: Colors.black87,
+                              blurRadius: 16,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Text(
+                        'VetAware',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 38,
+                          fontWeight: FontWeight.w800,
+                          height: 1.1,
+                          letterSpacing: -1,
+                          shadows: [
+                            Shadow(
+                              color: Colors.black87,
+                              blurRadius: 16,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
+                        ),
                       ),
 
                       const Spacer(),
 
                       // -----------------------------------------
-                      // HEADLINE — pills with soft shadow.
+                      // HEADLINE — pills.
                       // -----------------------------------------
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -231,7 +208,7 @@ class WelcomeScreen extends StatelessWidget {
                             'Caring for ',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 34,
+                              fontSize: 32,
                               fontWeight: FontWeight.w500,
                               height: 1.15,
                               letterSpacing: -0.5,
@@ -256,7 +233,7 @@ class WelcomeScreen extends StatelessWidget {
                             'not just ',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 34,
+                              fontSize: 32,
                               fontWeight: FontWeight.w500,
                               height: 1.15,
                               letterSpacing: -0.5,
@@ -272,15 +249,12 @@ class WelcomeScreen extends StatelessWidget {
                           _pillWord('apps'),
                         ],
                       ),
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 22),
 
-                      // -----------------------------------------
                       // SUBTITLE.
-                      // -----------------------------------------
                       const Text(
                         'Track vaccines, learn daily care tips,\n'
-                        'and prepare for vet visits — all in\n'
-                        'one calm, loving app.',
+                        'and prepare for vet visits.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.white70,
@@ -296,10 +270,10 @@ class WelcomeScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 28),
 
                       // -----------------------------------------
-                      // BOTTOM: White pill "Get Started" button.
+                      // GET STARTED button.
                       // -----------------------------------------
                       Container(
                         width: double.infinity,
@@ -313,7 +287,6 @@ class WelcomeScreen extends StatelessWidget {
                               blurRadius: 24,
                               offset: const Offset(0, 8),
                             ),
-                            // Warm glow under the button.
                             BoxShadow(
                               color: peach.withOpacity(0.3),
                               blurRadius: 30,
@@ -334,7 +307,6 @@ class WelcomeScreen extends StatelessWidget {
                               ),
                             ),
                             SizedBox(width: 10),
-                            // Arrow inside teal circle.
                             _ArrowBadge(),
                           ],
                         ),
@@ -351,7 +323,7 @@ class WelcomeScreen extends StatelessWidget {
   }
 
   // =====================================================
-  // HELPER: A word wrapped in a soft white pill.
+  // HELPER: Word inside white pill.
   // =====================================================
   Widget _pillWord(String word) {
     return Container(
@@ -374,7 +346,7 @@ class WelcomeScreen extends StatelessWidget {
         word,
         style: const TextStyle(
           color: darkText,
-          fontSize: 30,
+          fontSize: 28,
           fontWeight: FontWeight.w800,
           height: 1.1,
           letterSpacing: -0.6,
@@ -384,8 +356,7 @@ class WelcomeScreen extends StatelessWidget {
   }
 
   // =====================================================
-  // HELPER: Floating decorative paw print.
-  // Very low opacity for texture.
+  // HELPER: Floating paw print.
   // =====================================================
   Widget _pawPrint(double opacity, double size, double rotation) {
     return Transform.rotate(
@@ -400,8 +371,7 @@ class WelcomeScreen extends StatelessWidget {
 }
 
 // =====================================================
-// ARROW BADGE — small teal circle with white arrow.
-// Used inside the Get Started button.
+// ARROW BADGE — teal circle with white arrow.
 // =====================================================
 class _ArrowBadge extends StatelessWidget {
   const _ArrowBadge();
