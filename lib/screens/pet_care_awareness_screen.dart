@@ -2,464 +2,489 @@ import 'package:flutter/material.dart';
 import '../widgets/bottom_nav_bar.dart';
 
 // =====================================================
-// PET CARE AWARENESS SCREEN — Health Connect style.
-// Warm cream bg + orange gradient hero + soft white cards.
-// Bottom nav bar at bottom (Learn active).
+// LEARN SCREEN — the "Learn" tab of the app.
+// Hero card + categories + featured + articles.
 // =====================================================
 class PetCareAwarenessScreen extends StatelessWidget {
   const PetCareAwarenessScreen({super.key});
 
-  // =====================================================
-  // LOCAL COLOR PALETTE
-  // =====================================================
-  static const Color cream = Color(0xFFF5F0EA);
+  // Palette.
+  static const Color cream = Color(0xFFF7F4EF);
   static const Color cardWhite = Color(0xFFFFFFFF);
   static const Color darkText = Color(0xFF1F2421);
   static const Color greyText = Color(0xFF7A8781);
-  static const Color teal = Color(0xFF2BB5A8);
   static const Color peach = Color(0xFFE89B6F);
   static const Color peachLight = Color(0xFFF4B894);
+  static const Color mint = Color(0xFF5FA684);
+  static const Color mintLight = Color(0xFFEAF6F0);
+  static const Color lavender = Color(0xFFF0EBFA);
+  static const Color purpleDeep = Color(0xFF6E56A8);
+  static const Color amber = Color(0xFFE89B2D);
+  static const Color amberLight = Color(0xFFFFF6E8);
+  static const Color pink = Color(0xFFF8E5E0);
+  static const Color pinkDeep = Color(0xFFE05B7A);
+  static const Color blueLight = Color(0xFFE4EEF7);
+  static const Color blueDeep = Color(0xFF4F7FA8);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: cream,
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.only(bottom: 120),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
 
-      // -----------------------------------------
-      // APP BAR
-      // -----------------------------------------
-      appBar: AppBar(
-        backgroundColor: cream,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: darkText),
-          onPressed: () {},
-        ),
-        title: const Text(
-          'Pet Care',
-          style: TextStyle(
-            color: darkText,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-
-      // -----------------------------------------
-      // BODY
-      // -----------------------------------------
-      body: SafeArea(
-        bottom: false,
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.only(bottom: 120),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-
-              // -----------------------------------------
-              // HERO BANNER — orange gradient + cat avatar.
-              // -----------------------------------------
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
-                  height: 260,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(28),
-                    gradient: const LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [peach, peachLight],
+            // =========================================
+            // TOP BAR
+            // =========================================
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                20,
+                MediaQuery.of(context).padding.top + 12,
+                20,
+                8,
+              ),
+              child: Row(
+                children: [
+                  const Expanded(
+                    child: Text(
+                      'Learn',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                        color: darkText,
+                        letterSpacing: -0.5,
+                      ),
                     ),
                   ),
-                  child: Stack(
-                    children: [
+                  // Search icon.
+                  Container(
+                    width: 42,
+                    height: 42,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.05),
+                          blurRadius: 12,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: const Icon(
+                      Icons.search_rounded,
+                      color: darkText,
+                      size: 20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
 
-                      // Decorative white circle top-right.
-                      Positioned(
-                        top: -40,
-                        right: -40,
-                        child: Container(
-                          width: 200,
-                          height: 200,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white.withOpacity(0.15),
+            // =========================================
+            // HERO — the section you like.
+            // =========================================
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+              child: Container(
+                height: 190,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(26),
+                  gradient: const LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [peach, peachLight],
+                  ),
+                ),
+                child: Stack(
+                  children: [
+                    // Decorative circle top-right.
+                    Positioned(
+                      top: -40,
+                      right: -40,
+                      child: Container(
+                        width: 160,
+                        height: 160,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white.withOpacity(0.15),
+                        ),
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Chip.
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 5,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.25),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: const Text(
+                              '🐾  Daily Care',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
+                          const Spacer(),
 
-                      // Hero content: chip + text + cat avatar.
-                      Padding(
-                        padding: const EdgeInsets.all(24),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-
-                            // Small pill chip at top.
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 6,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.25),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: const Text(
-                                '🐾  Daily Care',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ),
-                            const Spacer(),
-
-                            // Row: text left, cat avatar right.
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-
-                                // Text block on LEFT.
-                                const Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        'Caring for',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w400,
-                                        ),
+                          // Row: text left, cat avatar right.
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              const Expanded(
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      'Caring for',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
                                       ),
-                                      SizedBox(height: 2),
-                                      Text(
-                                        'Your Pet',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 32,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      SizedBox(height: 12),
-                                      Text(
-                                        'Simple daily habits for a healthy, happy pet.',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 13,
-                                          height: 1.4,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-
-                                const SizedBox(width: 12),
-
-                                // Cat avatar on RIGHT.
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                      color: Colors.white.withOpacity(0.7),
-                                      width: 3,
                                     ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color:
-                                            Colors.black.withOpacity(0.15),
-                                        blurRadius: 12,
-                                        offset: const Offset(0, 4),
+                                    SizedBox(height: 2),
+                                    Text(
+                                      'Your Pet',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 28,
+                                        fontWeight: FontWeight.w800,
+                                        letterSpacing: -0.6,
                                       ),
-                                    ],
-                                  ),
-                                  child: ClipOval(
-                                    child: Image.asset(
-                                      'assets/images/pet_care_hero.png',
-                                      fit: BoxFit.cover,
                                     ),
+                                    SizedBox(height: 6),
+                                    Text(
+                                      'Simple daily habits for a healthy, happy pet.',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 11.5,
+                                        height: 1.4,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              // Cat avatar.
+                              Container(
+                                width: 80,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.white.withOpacity(0.8),
+                                    width: 3,
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color:
+                                          Colors.black.withOpacity(0.15),
+                                      blurRadius: 12,
+                                      offset: const Offset(0, 4),
+                                    ),
+                                  ],
+                                ),
+                                child: ClipOval(
+                                  child: Image.asset(
+                                    'assets/images/pet_care_hero.png',
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 28),
-
-              // -----------------------------------------
-              // SECTION HEADER: Daily Care Tips
-              // -----------------------------------------
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      'Daily Care Tips',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: darkText,
-                      ),
-                    ),
-                    Text(
-                      'View all',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: teal,
-                        fontWeight: FontWeight.w600,
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 14),
+            ),
+            const SizedBox(height: 24),
 
-              // -----------------------------------------
-              // TIP CARDS
-              // -----------------------------------------
-              const _TipCard(
-                image: 'assets/images/tip_feeding.jpg',
-                title: 'Feeding',
-                subtitle:
-                    'Feed your pet 2 times per day with fresh, balanced '
-                    'food. Keep a consistent schedule.',
+            // =========================================
+            // CATEGORY CHIPS — horizontal scroll.
+            // =========================================
+            SizedBox(
+              height: 40,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                children: const [
+                  _CategoryChip(label: 'All', selected: true),
+                  SizedBox(width: 8),
+                  _CategoryChip(label: 'Nutrition', selected: false),
+                  SizedBox(width: 8),
+                  _CategoryChip(label: 'Health', selected: false),
+                  SizedBox(width: 8),
+                  _CategoryChip(label: 'Behavior', selected: false),
+                  SizedBox(width: 8),
+                  _CategoryChip(label: 'Grooming', selected: false),
+                ],
               ),
-              const SizedBox(height: 16),
-              const _TipCard(
-                image: 'assets/images/tip_hydration.jpg',
-                title: 'Hydration',
-                subtitle:
-                    'Always keep a bowl of clean water available. Change '
-                    'it daily to support their kidneys and skin.',
-              ),
-              const SizedBox(height: 16),
-              const _TipCard(
-                image: 'assets/images/tip_exercise.jpg',
-                title: 'Exercise',
-                subtitle:
-                    'Play and walk for at least 30 minutes a day. Keeps '
-                    'their weight healthy and prevents boredom.',
-              ),
-              const SizedBox(height: 16),
-              const _TipCard(
-                image: 'assets/images/tip_vaccine.jpg',
-                title: 'Vaccines',
-                subtitle:
-                    'Keep vaccinations and vet check-ups up to date. A '
-                    'quick yearly visit prevents serious diseases.',
-              ),
-              const SizedBox(height: 28),
+            ),
+            const SizedBox(height: 24),
 
-              // -----------------------------------------
-              // SECTION HEADER: Warning Signs
-              // -----------------------------------------
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      'Warning Signs',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: darkText,
-                      ),
-                    ),
-                    Text(
-                      'View all',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: teal,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
+            // =========================================
+            // SECTION HEADER: Featured
+            // =========================================
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                'Featured Article',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w800,
+                  color: darkText,
+                  letterSpacing: -0.3,
                 ),
               ),
-              const SizedBox(height: 14),
+            ),
+            const SizedBox(height: 12),
 
-              // -----------------------------------------
-              // WARNING CARDS
-              // -----------------------------------------
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 24),
-                padding: const EdgeInsets.all(20),
+            // =========================================
+            // FEATURED ARTICLE — big card.
+            // =========================================
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
                 decoration: BoxDecoration(
                   color: cardWhite,
-                  borderRadius: BorderRadius.circular(24),
+                  borderRadius: BorderRadius.circular(22),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.04),
-                      blurRadius: 12,
-                      offset: const Offset(0, 4),
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 20,
+                      offset: const Offset(0, 8),
                     ),
                   ],
                 ),
                 child: Column(
-                  children: const [
-                    _WarningItem('Loss of appetite for more than a day'),
-                    SizedBox(height: 16),
-                    _WarningItem('Unusual lethargy or tiredness'),
-                    SizedBox(height: 16),
-                    _WarningItem('Vomiting or diarrhea lasting hours'),
-                    SizedBox(height: 16),
-                    _WarningItem('Difficulty breathing or heavy panting'),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Image.
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(22),
+                        topRight: Radius.circular(22),
+                      ),
+                      child: Image.asset(
+                        'assets/images/tip_feeding.jpg',
+                        width: double.infinity,
+                        height: 160,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // Category chip.
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
+                            decoration: BoxDecoration(
+                              color: mintLight,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Text(
+                              'NUTRITION',
+                              style: TextStyle(
+                                fontSize: 9.5,
+                                fontWeight: FontWeight.w800,
+                                color: mint,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          const Text(
+                            'Complete guide to feeding your pet',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w800,
+                              color: darkText,
+                              letterSpacing: -0.3,
+                              height: 1.3,
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          const Text(
+                            'Portion sizes, schedules, and food types '
+                            'for different pets.',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: greyText,
+                              height: 1.4,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          // Meta row.
+                          Row(
+                            children: const [
+                              Icon(
+                                Icons.schedule_rounded,
+                                size: 12,
+                                color: greyText,
+                              ),
+                              SizedBox(width: 4),
+                              Text(
+                                '5 min read',
+                                style: TextStyle(
+                                  fontSize: 10.5,
+                                  color: greyText,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              SizedBox(width: 12),
+                              Icon(
+                                Icons.visibility_rounded,
+                                size: 12,
+                                color: greyText,
+                              ),
+                              SizedBox(width: 4),
+                              Text(
+                                '2.1k views',
+                                style: TextStyle(
+                                  fontSize: 10.5,
+                                  color: greyText,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
-              const SizedBox(height: 28),
+            ),
+            const SizedBox(height: 28),
 
-              // -----------------------------------------
-              // CONTACT VET button
-              // -----------------------------------------
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: SizedBox(
-                  height: 56,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: darkText,
-                      foregroundColor: Colors.white,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(28),
-                      ),
-                    ),
-                    child: const Text(
-                      'Contact Vet',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
+            // =========================================
+            // SECTION HEADER: All Articles
+            // =========================================
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                'All Articles',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w800,
+                  color: darkText,
+                  letterSpacing: -0.3,
                 ),
               ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 12),
+
+            // =========================================
+            // ARTICLE LIST — small rows.
+            // =========================================
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: const [
+                  _ArticleRow(
+                    image: 'assets/images/tip_hydration.jpg',
+                    title: 'Hydration basics for pets',
+                    category: 'HEALTH',
+                    readTime: '3 min',
+                    color: blueDeep,
+                    bgColor: blueLight,
+                  ),
+                  SizedBox(height: 12),
+                  _ArticleRow(
+                    image: 'assets/images/tip_exercise.jpg',
+                    title: 'Daily exercise routines',
+                    category: 'BEHAVIOR',
+                    readTime: '4 min',
+                    color: purpleDeep,
+                    bgColor: lavender,
+                  ),
+                  SizedBox(height: 12),
+                  _ArticleRow(
+                    image: 'assets/images/tip_vaccine.jpg',
+                    title: 'Vaccination schedule',
+                    category: 'HEALTH',
+                    readTime: '6 min',
+                    color: amber,
+                    bgColor: amberLight,
+                  ),
+                  SizedBox(height: 12),
+                  _ArticleRow(
+                    image: 'assets/images/luna_cat.jpg',
+                    title: 'Grooming tips for long-haired cats',
+                    category: 'GROOMING',
+                    readTime: '5 min',
+                    color: pinkDeep,
+                    bgColor: pink,
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
-
-      // Bottom nav bar with "Learn" active (index 3).
       bottomNavigationBar: const BottomNavBar(activeIndex: 3),
     );
   }
 }
 
 // =====================================================
-// TIP CARD — soft white card, image left, text right.
+// CATEGORY CHIP
 // =====================================================
-class _TipCard extends StatelessWidget {
-  final String image;
-  final String title;
-  final String subtitle;
+class _CategoryChip extends StatelessWidget {
+  final String label;
+  final bool selected;
 
-  const _TipCard({
-    required this.image,
-    required this.title,
-    required this.subtitle,
-  });
-
-  static const Color cardWhite = Color(0xFFFFFFFF);
-  static const Color darkText = Color(0xFF1F2421);
-  static const Color greyText = Color(0xFF7A8781);
-  static const Color peach = Color(0xFFE89B6F);
+  const _CategoryChip({required this.label, required this.selected});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Container(
-        height: 140,
-        decoration: BoxDecoration(
-          color: cardWhite,
-          borderRadius: BorderRadius.circular(22),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.04),
-              blurRadius: 12,
-              offset: const Offset(0, 4),
-            ),
-          ],
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      decoration: BoxDecoration(
+        color: selected ? const Color(0xFF1F2421) : Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: selected
+              ? Colors.transparent
+              : const Color(0xFFE5DDD2),
+          width: 1,
         ),
-        child: Row(
-          children: [
-
-            // LEFT: Image thumbnail.
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Image.asset(
-                  image,
-                  width: 105,
-                  height: 120,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-
-            // RIGHT: Title + subtitle.
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(4, 16, 18, 16),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Orange dot + title.
-                    Row(
-                      children: [
-                        Container(
-                          width: 6,
-                          height: 6,
-                          decoration: const BoxDecoration(
-                            color: peach,
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          title,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: darkText,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Expanded(
-                      child: Text(
-                        subtitle,
-                        style: const TextStyle(
-                          fontSize: 12.5,
-                          color: greyText,
-                          height: 1.4,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 4,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+      ),
+      child: Center(
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: 12.5,
+            fontWeight: FontWeight.w700,
+            color: selected ? Colors.white : const Color(0xFF1F2421),
+          ),
         ),
       ),
     );
@@ -467,47 +492,125 @@ class _TipCard extends StatelessWidget {
 }
 
 // =====================================================
-// WARNING ITEM — orange icon box + text.
+// ARTICLE ROW — small horizontal card.
 // =====================================================
-class _WarningItem extends StatelessWidget {
-  final String text;
+class _ArticleRow extends StatelessWidget {
+  final String image;
+  final String title;
+  final String category;
+  final String readTime;
+  final Color color;
+  final Color bgColor;
 
-  const _WarningItem(this.text);
-
-  static const Color darkText = Color(0xFF1F2421);
-  static const Color peach = Color(0xFFE89B6F);
+  const _ArticleRow({
+    required this.image,
+    required this.title,
+    required this.category,
+    required this.readTime,
+    required this.color,
+    required this.bgColor,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          width: 40,
-          height: 40,
-          decoration: BoxDecoration(
-            color: peach.withOpacity(0.15),
-            borderRadius: BorderRadius.circular(12),
+    return Container(
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
           ),
-          child: const Icon(
-            Icons.warning_amber_rounded,
-            color: peach,
-            size: 20,
-          ),
-        ),
-        const SizedBox(width: 14),
-        Expanded(
-          child: Text(
-            text,
-            style: const TextStyle(
-              color: darkText,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              height: 1.3,
+        ],
+      ),
+      child: Row(
+        children: [
+          // Image.
+          ClipRRect(
+            borderRadius: BorderRadius.circular(14),
+            child: Image.asset(
+              image,
+              width: 72,
+              height: 72,
+              fit: BoxFit.cover,
             ),
           ),
-        ),
-      ],
+          const SizedBox(width: 14),
+
+          // Info.
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Category chip.
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: bgColor,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Text(
+                    category,
+                    style: TextStyle(
+                      fontSize: 9,
+                      fontWeight: FontWeight.w800,
+                      color: color,
+                      letterSpacing: 0.4,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 6),
+                // Title.
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w800,
+                    color: Color(0xFF1F2421),
+                    letterSpacing: -0.2,
+                    height: 1.3,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 6),
+                // Meta.
+                Row(
+                  children: [
+                    Icon(
+                      Icons.schedule_rounded,
+                      size: 11,
+                      color: const Color(0xFF7A8781),
+                    ),
+                    const SizedBox(width: 3),
+                    Text(
+                      readTime,
+                      style: const TextStyle(
+                        fontSize: 10,
+                        color: Color(0xFF7A8781),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+
+          // Chevron.
+          const Icon(
+            Icons.chevron_right_rounded,
+            color: Color(0xFFB5C0BD),
+            size: 22,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -63,52 +63,97 @@ class AddPetScreen extends StatelessWidget {
               ),
               const SizedBox(height: 24),
 
+                     // -----------------------------------------
+              // HERO — Pet_add.png with "Add Photo" overlay.
+              // Rounded card with gradient for readability.
               // -----------------------------------------
-              // PHOTO PICKER — teal box, centered.
-              // -----------------------------------------
-              Center(
-                child: Column(
-                  children: [
-                    Container(
-                      width: 120,
-                      height: 120,
-                      decoration: BoxDecoration(
-                        color: teal,
-                        borderRadius: BorderRadius.circular(24),
-                        boxShadow: [
-                          BoxShadow(
-                            color: teal.withOpacity(0.3),
-                            blurRadius: 16,
-                            offset: const Offset(0, 8),
-                          ),
-                        ],
+                 Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(24),
+                  child: Stack(
+                    children: [
+                      // Dog image — soft peach background,
+                      // show the whole dog with contain.
+                      Container(
+                        width: double.infinity,
+                        height: 220,
+                        color: const Color(0xFFF8E5E0),
+                        child: Image.asset(
+                          'assets/images/Pet_add.png',
+                          fit: BoxFit.contain,
+                        ),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(
-                            Icons.add_a_photo_outlined,
-                            color: Colors.white,
-                            size: 32,
-                          ),
-                          SizedBox(height: 6),
-                          Text(
-                            'Add Photo',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
+
+                      // Soft gradient at bottom.
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: 80,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.transparent,
+                                Colors.black.withOpacity(0.35),
+                              ],
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Upload a clear photo of your pet',
-                      style: TextStyle(fontSize: 12, color: greyText),
-                    ),
-                  ],
+                      // "Add Photo" button overlaid (bottom-left).
+                      Positioned(
+                        left: 16,
+                        bottom: 16,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 14,
+                            vertical: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            color: teal,
+                            borderRadius: BorderRadius.circular(14),
+                            boxShadow: [
+                              BoxShadow(
+                                color: teal.withOpacity(0.4),
+                                blurRadius: 16,
+                                offset: const Offset(0, 6),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Icon(
+                                Icons.add_a_photo_outlined,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                              SizedBox(width: 8),
+                              Text(
+                                'Add Photo',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+              const Center(
+                child: Text(
+                  'Upload a clear photo of your pet',
+                  style: TextStyle(fontSize: 12, color: greyText),
                 ),
               ),
               const SizedBox(height: 32),
