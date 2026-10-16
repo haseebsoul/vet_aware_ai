@@ -44,14 +44,14 @@ class VetAwareApp extends StatelessWidget {
       // Uncomment ONE line to show that screen.
       // =====================================================
 
-       home: const WelcomeScreen(),
-      // home: const LoginScreen(),
-      //  home: const SignUpScreen(),
-      //  home: const HomeScreen(),
-      //  home: const AddPetScreen(),
-        // home: const PetCareAwarenessScreen(),
-      //  home: const PetProfileScreen(),
-      // home: const CheckScreen(),               // ← CURRENT
+        home: const WelcomeScreen(),
+      //  home: const LoginScreen(),
+        // home: const SignUpScreen(),
+        // home: const HomeScreen(),
+        // home: const AddPetScreen(),
+        //  home: const PetCareAwarenessScreen(),
+        // home: const PetProfileScreen(),
+      //  home: const CheckScreen(),               // ← CURRENT
     );
   }
 }
