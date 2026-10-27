@@ -275,40 +275,46 @@ class WelcomeScreen extends StatelessWidget {
                       // -----------------------------------------
                       // GET STARTED button.
                       // -----------------------------------------
-                      Container(
-                        width: double.infinity,
-                        height: 60,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(30),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.25),
-                              blurRadius: 24,
-                              offset: const Offset(0, 8),
-                            ),
-                            BoxShadow(
-                              color: peach.withOpacity(0.3),
-                              blurRadius: 30,
-                              offset: const Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Get Started',
-                              style: TextStyle(
-                                color: darkText,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 0.2,
+                      // 👉 [ROUTING] Wrapping in GestureDetector makes the Container tappable.
+                      GestureDetector(
+                        // 👉 [ROUTING] Tapping this opens the Login screen ('/login').
+                        onTap: () => Navigator.pushNamed(context, '/login'),
+                        
+                        child: Container(
+                          width: double.infinity,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.25),
+                                blurRadius: 24,
+                                offset: const Offset(0, 8),
                               ),
-                            ),
-                            SizedBox(width: 10),
-                            _ArrowBadge(),
-                          ],
+                              BoxShadow(
+                                color: peach.withOpacity(0.3),
+                                blurRadius: 30,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Get Started',
+                                style: TextStyle(
+                                  color: darkText,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 0.2,
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              _ArrowBadge(),
+                            ],
+                          ),
                         ),
                       ),
                     ],

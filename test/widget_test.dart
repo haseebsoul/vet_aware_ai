@@ -1,20 +1,19 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:vet_aware_ai/main.dart';
+import 'package:vet_aware_ai/screens/welcome_screen.dart';
 
 void main() {
-  testWidgets('VetAware app shows the pet detail screen', (WidgetTester tester) async {
+  // Smoke test: the app should start on WelcomeScreen.
+  // We check the widget TYPE (not text), so this test
+  // stays valid even if Welcome's text changes later.
+  testWidgets('App starts on WelcomeScreen', (WidgetTester tester) async {
+    // 1. Launch the whole app.
     await tester.pumpWidget(const VetAwareApp());
 
-    expect(find.text('Bella'), findsOneWidget);
-    expect(find.text('Prepare for Vet Visit'), findsOneWidget);
+    // 2. Wait for animations / layout to finish.
+    await tester.pumpAndSettle();
+
+    // 3. Assert WelcomeScreen is on screen.
+    expect(find.byType(WelcomeScreen), findsOneWidget);
   });
 }

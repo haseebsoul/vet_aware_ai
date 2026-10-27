@@ -47,7 +47,8 @@ class SignUpScreen extends StatelessWidget {
                   // GLASS FORM — semi-transparent panel
                   // with the full registration form.
                   // -----------------------------------------
-                  _glassForm(),
+                  // 👉 [ROUTING] Passing context so buttons inside can navigate
+                  _glassForm(context),
                 ],
               ),
             ),
@@ -60,7 +61,8 @@ class SignUpScreen extends StatelessWidget {
   // =====================================================
   // GLASS FORM — warm white panel with the form.
   // =====================================================
-  Widget _glassForm() {
+  // 👉 [ROUTING] Added context parameter here
+  Widget _glassForm(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(28),
       child: BackdropFilter(
@@ -159,7 +161,8 @@ class SignUpScreen extends StatelessWidget {
               SizedBox(
                 height: 52,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  // 👉 [ROUTING] After sign up, go to Home and remove SignUp from back-stack
+                  onPressed: () => Navigator.pushReplacementNamed(context, '/home'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppTheme.teal,
                     foregroundColor: Colors.white,
@@ -184,20 +187,26 @@ class SignUpScreen extends StatelessWidget {
               // -----------------------------------------
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
+                children: [
+                  const Text(
                     'Already have an account? ',
                     style: TextStyle(
                       fontSize: 13,
                       color: AppTheme.greyText,
                     ),
                   ),
-                  Text(
-                    'Log In',
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: AppTheme.teal,
-                      fontWeight: FontWeight.bold,
+                  
+                  // 👉 [ROUTING] Wrapping the text in GestureDetector to make it tappable
+                  GestureDetector(
+                    // 👉 [ROUTING] Go back to Login screen
+                    onTap: () => Navigator.pushReplacementNamed(context, '/login'),
+                    child: const Text(
+                      'Log In',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: AppTheme.teal,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],

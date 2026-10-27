@@ -194,7 +194,12 @@ class _LoginSheet extends StatelessWidget {
                 SizedBox(
                   height: 52,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    // 👉 [ROUTING] Inside the Login Sheet: Sign In action
+                    onPressed: () {
+                      Navigator.pop(context); // Close the sheet first
+                      // 👉 [ROUTING] Go to Home and remove Login from back-stack
+                      Navigator.pushReplacementNamed(context, '/home');
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppTheme.teal,
                       foregroundColor: Colors.white,
@@ -217,17 +222,27 @@ class _LoginSheet extends StatelessWidget {
                 // Footer: Don't have an account? Sign Up
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       "Don't have an account? ",
                       style: TextStyle(fontSize: 13, color: AppTheme.greyText),
                     ),
-                    Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: AppTheme.teal,
-                        fontWeight: FontWeight.bold,
+                    
+                    // 👉 [ROUTING] Wrapping the text in GestureDetector to make it tappable
+                    GestureDetector(
+                      // 👉 [ROUTING] Inside the Login Sheet: Sign Up action
+                      onTap: () {
+                        Navigator.pop(context); // Close the sheet first
+                        // 👉 [ROUTING] Go to Sign Up screen
+                        Navigator.pushNamed(context, '/signup');
+                      },
+                      child: const Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: AppTheme.teal,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],
