@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/bottom_nav_bar.dart';
+
+// import '../widgets/bottom_nav_bar.dart';
 
 // =====================================================
 // LEARN SCREEN — the "Learn" tab of the app.
@@ -31,11 +32,10 @@ class PetCareAwarenessScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: cream,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(bottom: 120),
+        padding: const EdgeInsets.only(bottom: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // =========================================
             // TOP BAR
             // =========================================
@@ -147,8 +147,7 @@ class PetCareAwarenessScreen extends StatelessWidget {
                             children: [
                               const Expanded(
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text(
@@ -195,8 +194,7 @@ class PetCareAwarenessScreen extends StatelessWidget {
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color:
-                                          Colors.black.withOpacity(0.15),
+                                      color: Colors.black.withOpacity(0.15),
                                       blurRadius: 12,
                                       offset: const Offset(0, 4),
                                     ),
@@ -449,7 +447,6 @@ class PetCareAwarenessScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(activeIndex: 3),
     );
   }
 }
@@ -471,9 +468,7 @@ class _CategoryChip extends StatelessWidget {
         color: selected ? const Color(0xFF1F2421) : Colors.white,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: selected
-              ? Colors.transparent
-              : const Color(0xFFE5DDD2),
+          color: selected ? Colors.transparent : const Color(0xFFE5DDD2),
           width: 1,
         ),
       ),
@@ -531,12 +526,7 @@ class _ArticleRow extends StatelessWidget {
           // Image.
           ClipRRect(
             borderRadius: BorderRadius.circular(14),
-            child: Image.asset(
-              image,
-              width: 72,
-              height: 72,
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset(image, width: 72, height: 72, fit: BoxFit.cover),
           ),
           const SizedBox(width: 14),
 

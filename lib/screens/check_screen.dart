@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/bottom_nav_bar.dart';
 
 // =====================================================
 // CHECK SCREEN — the core health check feature.
@@ -34,7 +33,6 @@ class CheckScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // =========================================
             // TOP BAR — back + title + Close.
             // =========================================
@@ -129,8 +127,7 @@ class CheckScreen extends StatelessWidget {
                       value: 0.33,
                       minHeight: 5,
                       backgroundColor: lavender,
-                      valueColor:
-                          const AlwaysStoppedAnimation(purpleDeep),
+                      valueColor: const AlwaysStoppedAnimation(purpleDeep),
                     ),
                   ),
                 ],
@@ -414,10 +411,7 @@ class CheckScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: 8),
-                      Icon(
-                        Icons.arrow_forward_rounded,
-                        size: 18,
-                      ),
+                      Icon(Icons.arrow_forward_rounded, size: 18),
                     ],
                   ),
                 ),
@@ -426,14 +420,13 @@ class CheckScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(activeIndex: 2),
+      // bottomNavigationBar: const BottomNavBar(activeIndex: 2),
     );
   }
 
   // =====================================================
   // HELPER: Pet selector circle.
   // =====================================================
-  
 
   // =====================================================
   // HELPER: Symptom row (icon + label + optional select).
@@ -515,11 +508,7 @@ class CheckScreen extends StatelessWidget {
               ),
             ),
             child: selected
-                ? const Icon(
-                    Icons.check_rounded,
-                    color: Colors.white,
-                    size: 14,
-                  )
+                ? const Icon(Icons.check_rounded, color: Colors.white, size: 14)
                 : null,
           ),
         ],
@@ -582,15 +571,11 @@ class _PetSelector extends StatelessWidget {
               shape: BoxShape.circle,
               color: selected ? const Color(0xFF2BB5A8) : Colors.transparent,
               border: Border.all(
-                color: selected
-                    ? Colors.transparent
-                    : const Color(0xFFE5DDD2),
+                color: selected ? Colors.transparent : const Color(0xFFE5DDD2),
                 width: 2,
               ),
             ),
-            child: ClipOval(
-              child: Image.asset(image, fit: BoxFit.cover),
-            ),
+            child: ClipOval(child: Image.asset(image, fit: BoxFit.cover)),
           ),
           const SizedBox(height: 6),
           Text(

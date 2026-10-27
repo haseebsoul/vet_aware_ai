@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../widgets/bottom_nav_bar.dart';
 
 // =====================================================
 // HOME SCREEN — refined professional design.
 // =====================================================
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final VoidCallback? onViewAllPets;
 
+  const HomeScreen({super.key, this.onViewAllPets});
   // Palette.
   static const Color cream = Color(0xFFF7F4EF);
   static const Color darkText = Color(0xFF1A2E28);
@@ -26,11 +26,10 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: cream,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(bottom: 120),
+        padding: const EdgeInsets.only(bottom: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // =========================================
             // TOP NAVBAR — green gradient.
             // =========================================
@@ -125,10 +124,7 @@ class HomeScreen extends StatelessWidget {
                         height: 44,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 2.5,
-                          ),
+                          border: Border.all(color: Colors.white, width: 2.5),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withOpacity(0.15),
@@ -165,7 +161,11 @@ class HomeScreen extends StatelessWidget {
             // =========================================
             // SECTION: Your Pet Today
             // =========================================
-            _sectionHeader('Your Pet Today', 'View all'),
+            _sectionHeader(
+              'Your Pet Today',
+              'View all',
+              onActionTap: onViewAllPets,
+            ),
             const SizedBox(height: 12),
 
             // -----------------------------------------
@@ -178,10 +178,7 @@ class HomeScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(26),
-                  border: Border.all(
-                    color: mintAccent,
-                    width: 1.2,
-                  ),
+                  border: Border.all(color: mintAccent, width: 1.2),
                   boxShadow: [
                     BoxShadow(
                       color: mintDeep.withOpacity(0.08),
@@ -216,8 +213,7 @@ class HomeScreen extends StatelessWidget {
                           const SizedBox(width: 14),
                           Expanded(
                             child: Column(
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text(
                                   'Luna',
@@ -246,8 +242,7 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                   decoration: BoxDecoration(
                                     color: mintLight,
-                                    borderRadius:
-                                        BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -290,8 +285,7 @@ class HomeScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
-                            mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: const [
                               Text(
                                 'Vaccination Progress',
@@ -319,8 +313,7 @@ class HomeScreen extends StatelessWidget {
                               value: 0.75,
                               minHeight: 7,
                               backgroundColor: mintLight,
-                              valueColor:
-                                  const AlwaysStoppedAnimation(
+                              valueColor: const AlwaysStoppedAnimation(
                                 mintDeep,
                               ),
                             ),
@@ -360,8 +353,7 @@ class HomeScreen extends StatelessWidget {
                             const SizedBox(width: 12),
                             Expanded(
                               child: Column(
-                                crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: const [
                                   Text(
                                     'NEXT · BOOSTER VACCINE',
@@ -437,10 +429,7 @@ class HomeScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(26),
-                  border: Border.all(
-                    color: lavenderAccent,
-                    width: 1.2,
-                  ),
+                  border: Border.all(color: lavenderAccent, width: 1.2),
                   boxShadow: [
                     BoxShadow(
                       color: purpleDeep.withOpacity(0.08),
@@ -479,8 +468,7 @@ class HomeScreen extends StatelessWidget {
                           const SizedBox(width: 14),
                           Expanded(
                             child: Column(
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: const [
                                 Text(
                                   'Dr. Stephanie Dollores',
@@ -519,8 +507,11 @@ class HomeScreen extends StatelessWidget {
                             ),
                             child: Row(
                               children: const [
-                                Icon(Icons.star_rounded,
-                                    color: amber, size: 14),
+                                Icon(
+                                  Icons.star_rounded,
+                                  color: amber,
+                                  size: 14,
+                                ),
                                 SizedBox(width: 3),
                                 Text(
                                   '4.9',
@@ -568,8 +559,11 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           Row(
                             children: const [
-                              Icon(Icons.location_on_rounded,
-                                  size: 14, color: greyText),
+                              Icon(
+                                Icons.location_on_rounded,
+                                size: 14,
+                                color: greyText,
+                              ),
                               SizedBox(width: 6),
                               Text(
                                 'VetAware Clinic · 2.3 km',
@@ -584,8 +578,11 @@ class HomeScreen extends StatelessWidget {
                           const SizedBox(height: 5),
                           Row(
                             children: const [
-                              Icon(Icons.schedule_rounded,
-                                  size: 14, color: greyText),
+                              Icon(
+                                Icons.schedule_rounded,
+                                size: 14,
+                                color: greyText,
+                              ),
                               SizedBox(width: 6),
                               Text(
                                 'Available Today · 12:00 – 20:00',
@@ -614,16 +611,13 @@ class HomeScreen extends StatelessWidget {
                             foregroundColor: Colors.white,
                             elevation: 0,
                             shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(14),
+                              borderRadius: BorderRadius.circular(14),
                             ),
                           ),
                           child: const Row(
-                            mainAxisAlignment:
-                                MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.calendar_today_rounded,
-                                  size: 16),
+                              Icon(Icons.calendar_today_rounded, size: 16),
                               SizedBox(width: 8),
                               Text(
                                 'Book Appointment',
@@ -646,7 +640,7 @@ class HomeScreen extends StatelessWidget {
             // =========================================
             // SECTION: My Pets
             // =========================================
-            _sectionHeader('My Pets', 'View all'),
+            _sectionHeader('My Pets', 'View all', onActionTap: onViewAllPets),
             const SizedBox(height: 12),
 
             // PET LIST — horizontal rows.
@@ -654,7 +648,7 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(
-                children: const [
+                children: [
                   _PetRow(
                     image: 'assets/images/bella_dog.jpg',
                     name: 'Bella',
@@ -662,8 +656,11 @@ class HomeScreen extends StatelessWidget {
                     age: '3 yrs',
                     health: 'Healthy',
                     healthColor: Color(0xFF5FA684),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/pet-profile');
+                    },
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   _PetRow(
                     image: 'assets/images/luna_cat.jpg',
                     name: 'Luna',
@@ -671,8 +668,11 @@ class HomeScreen extends StatelessWidget {
                     age: '2 yrs',
                     health: 'Healthy',
                     healthColor: Color(0xFF5FA684),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/pet-profile');
+                    },
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   _PetRow(
                     image: 'assets/images/max_dog.jpg',
                     name: 'Max',
@@ -680,8 +680,11 @@ class HomeScreen extends StatelessWidget {
                     age: '5 yrs',
                     health: 'Due soon',
                     healthColor: Color(0xFFE89B2D),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/pet-profile');
+                    },
                   ),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                   _PetRow(
                     image: 'assets/images/coco_parrot.jpg',
                     name: 'Coco',
@@ -689,6 +692,9 @@ class HomeScreen extends StatelessWidget {
                     age: '1 yr',
                     health: 'Due soon',
                     healthColor: Color(0xFFE89B2D),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/pet-profile');
+                    },
                   ),
                 ],
               ),
@@ -696,14 +702,17 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(activeIndex: 0),
     );
   }
 
   // =====================================================
   // Section header.
   // =====================================================
-  Widget _sectionHeader(String title, String action) {
+  Widget _sectionHeader(
+    String title,
+    String action, {
+    VoidCallback? onActionTap,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Row(
@@ -718,12 +727,19 @@ class HomeScreen extends StatelessWidget {
               letterSpacing: -0.3,
             ),
           ),
-          Text(
-            action,
-            style: const TextStyle(
-              fontSize: 12,
-              color: teal,
-              fontWeight: FontWeight.w800,
+          InkWell(
+            onTap: onActionTap,
+            borderRadius: BorderRadius.circular(8),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+              child: Text(
+                action,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: teal,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
             ),
           ),
         ],
@@ -798,6 +814,7 @@ class _PetRow extends StatelessWidget {
   final String age;
   final String health;
   final Color healthColor;
+  final VoidCallback? onTap;
 
   const _PetRow({
     required this.image,
@@ -806,124 +823,125 @@ class _PetRow extends StatelessWidget {
     required this.age,
     required this.health,
     required this.healthColor,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.04),
-            blurRadius: 16,
-            offset: const Offset(0, 6),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-
-          // -----------------------------------------
-          // PHOTO on the LEFT — square + colored ring.
-          // BoxFit.cover crops any image to a clean
-          // square without distortion.
-          // -----------------------------------------
-          Container(
-            width: 72,
-            height: 72,
-            padding: const EdgeInsets.all(2),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(18),
-              border: Border.all(
-                color: healthColor.withOpacity(0.4),
-                width: 2,
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(20),
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.04),
+              blurRadius: 16,
+              offset: const Offset(0, 6),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            // -----------------------------------------
+            // PHOTO on the LEFT — square + colored ring.
+            // BoxFit.cover crops any image to a clean
+            // square without distortion.
+            // -----------------------------------------
+            Container(
+              width: 72,
+              height: 72,
+              padding: const EdgeInsets.all(2),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(
+                  color: healthColor.withOpacity(0.4),
+                  width: 2,
+                ),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(14),
+                child: Image.asset(image, fit: BoxFit.cover),
               ),
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(14),
-              child: Image.asset(
-                image,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          const SizedBox(width: 14),
+            const SizedBox(width: 14),
 
-          // -----------------------------------------
-          // INFO in the MIDDLE.
-          // -----------------------------------------
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Name + health dot next to it.
-                Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        name,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w800,
-                          color: Color(0xFF1A2E28),
-                          letterSpacing: -0.3,
+            // -----------------------------------------
+            // INFO in the MIDDLE.
+            // -----------------------------------------
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Name + health dot next to it.
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Text(
+                          name,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800,
+                            color: Color(0xFF1A2E28),
+                            letterSpacing: -0.3,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    Container(
-                      width: 6,
-                      height: 6,
-                      decoration: BoxDecoration(
-                        color: healthColor,
-                        shape: BoxShape.circle,
+                      const SizedBox(width: 8),
+                      Container(
+                        width: 6,
+                        height: 6,
+                        decoration: BoxDecoration(
+                          color: healthColor,
+                          shape: BoxShape.circle,
+                        ),
                       ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+
+                  // Breed · Age.
+                  Text(
+                    '$breed · $age',
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Color(0xFF6B7B77),
+                      fontWeight: FontWeight.w500,
                     ),
-                  ],
-                ),
-                const SizedBox(height: 4),
-
-                // Breed · Age.
-                Text(
-                  '$breed · $age',
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: Color(0xFF6B7B77),
-                    fontWeight: FontWeight.w500,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const SizedBox(height: 6),
+                  const SizedBox(height: 6),
 
-                // Health status text (small, colored).
-                Text(
-                  health,
-                  style: TextStyle(
-                    fontSize: 10.5,
-                    fontWeight: FontWeight.w800,
-                    color: healthColor,
-                    letterSpacing: 0.2,
+                  // Health status text (small, colored).
+                  Text(
+                    health,
+                    style: TextStyle(
+                      fontSize: 10.5,
+                      fontWeight: FontWeight.w800,
+                      color: healthColor,
+                      letterSpacing: 0.2,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
 
-          // -----------------------------------------
-          // CHEVRON on the RIGHT (tap indicator).
-          // -----------------------------------------
-          const Icon(
-            Icons.chevron_right_rounded,
-            color: Color(0xFFB5C0BD),
-            size: 22,
-          ),
-        ],
+            // -----------------------------------------
+            // CHEVRON on the RIGHT (tap indicator).
+            // -----------------------------------------
+            const Icon(
+              Icons.chevron_right_rounded,
+              color: Color(0xFFB5C0BD),
+              size: 22,
+            ),
+          ],
+        ),
       ),
     );
   }

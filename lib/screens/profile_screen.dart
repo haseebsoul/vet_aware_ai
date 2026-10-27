@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+
 import '../theme/app_theme.dart';
-import '../widgets/bottom_nav_bar.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -12,7 +12,7 @@ class ProfileScreen extends StatelessWidget {
       body: SafeArea(
         bottom: false,
         child: SingleChildScrollView(
-          padding: const EdgeInsets.only(bottom: 100),
+          padding: const EdgeInsets.only(bottom: 24),
           child: Column(
             children: [
               const SizedBox(height: 20),
@@ -62,13 +62,22 @@ class ProfileScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
-                    _settingsTile(icon: Icons.person_outline, title: 'Personal Information'),
+                    _settingsTile(
+                      icon: Icons.person_outline,
+                      title: 'Personal Information',
+                    ),
                     const SizedBox(height: 12),
                     _settingsTile(icon: Icons.pets, title: 'My Pets'),
                     const SizedBox(height: 12),
-                    _settingsTile(icon: Icons.notifications_none, title: 'Notifications'),
+                    _settingsTile(
+                      icon: Icons.notifications_none,
+                      title: 'Notifications',
+                    ),
                     const SizedBox(height: 12),
-                    _settingsTile(icon: Icons.help_outline, title: 'Help & Support'),
+                    _settingsTile(
+                      icon: Icons.help_outline,
+                      title: 'Help & Support',
+                    ),
                   ],
                 ),
               ),
@@ -81,8 +90,8 @@ class ProfileScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamedAndRemoveUntil(
-                        context, 
-                        '/welcome', 
+                        context,
+                        '/welcome',
                         (route) => false,
                       );
                     },
@@ -97,7 +106,10 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     child: const Text(
                       'Log Out',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -106,7 +118,6 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(activeIndex: 4),
     );
   }
 
